@@ -1,4 +1,4 @@
-import initiate from "../../common/parse-initialize";
+import initiate from "@/common/parse-initialize";
 import hymnLookup from "./hymn-lookup";
 import programItems from "./program-items";
 
@@ -25,7 +25,8 @@ export async function GET(request) {
         chorister: result.get("chorister"),
         organist: result.get("organist"),
         presiding: result.get("presiding"),
-        conducting: result.get("conducting"),        openingHymn: openingHymn,
+        conducting: result.get("conducting"),
+        openingHymn: openingHymn,
         openingPrayer: result.get("openingPrayer"),
         sacramentHymn: sacramentHymn,
         closingHymn: closingHymn,

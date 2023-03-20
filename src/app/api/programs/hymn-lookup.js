@@ -1,4 +1,4 @@
-import initiate from "@/app/common/parse-initialize";
+import initiate from "@/common/parse-initialize";
 
 export default async function hymnLookup(hymnNumber) {
   const myParse = initiate();
