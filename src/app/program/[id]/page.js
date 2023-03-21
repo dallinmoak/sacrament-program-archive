@@ -1,4 +1,4 @@
-import ProgramItemDetail from "@/components/program-item-detail";
+import ProgramItemDetail from "@/components/program-detail/program-item-detail";
 
 export default function Page({ params}){
   if( params.id){

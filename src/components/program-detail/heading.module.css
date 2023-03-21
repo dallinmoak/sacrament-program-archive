@@ -1,0 +1,33 @@
+.tables{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap:wrap;
+}
+
+.table{
+  min-width: 20em;
+}
+.table-row{
+  display: flex;
+  justify-content: space-between;
+  white-space: nowrap;
+}
+
+.spacer{
+  margin: 0 0.2em;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.spacer>*{
+  width: 100%;
+  border-top: 1px dashed black;
+}
+
+.heading{
+  text-align: center;
+  margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
+}

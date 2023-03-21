@@ -1,8 +1,12 @@
-"use client";
+"use client"
+
+import CSSModules from "react-css-modules";
+import styles from "./program-detail.module.css"
 
 import {useEffect, useState } from 'react';
+import Heading from "./heading";
 
-export default function ProgramItemDetail(props) {
+export default CSSModules (function ProgramItemDetail(props) {
   const [loading, setLoading] = useState(true);
   const  [programDetails, setProgramDetails ] = useState();
   const getProgram = async (id) => {
@@ -26,12 +30,23 @@ export default function ProgramItemDetail(props) {
   useEffect(() => {
     getProgram(props.id);
   }, []);
+  let inner;
+
   if (loading) {
-    return "loading...";
+    inner = "loading...";
   } else {
-    return <>
-    <p>details: </p>
-    <div>{JSON.stringify(programDetails)}</div>
-    </>
+    inner = (
+      <div>
+        <Heading programDetails={programDetails} />
+        {JSON.stringify(programDetails)}
+      </div>
+    )
   }
-}
+
+  return (
+    <div styleName={`wrapper ${loading ? "loading" : ""}`}>
+      {inner}
+    </div>
+  )
+  
+}, styles, {allowMultiple: true});
