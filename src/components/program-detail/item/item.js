@@ -25,6 +25,7 @@ export default CSSModules(
           )}
         </div>
         {hymnTitle ? (
+          <>
           <div styleName="hymn">
             &ldquo;
             <a href={hymnLink} target="_blank">
@@ -32,6 +33,13 @@ export default CSSModules(
             </a>
             &rdquo;
           </div>
+          {label=="Sacrament Hymn" ? 
+            <div styleName='sacr'>
+              Administration of the Sacrament
+            </div> :
+            null
+          }
+          </>
         ) : null}
       </div>
     );
