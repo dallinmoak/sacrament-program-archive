@@ -16,7 +16,7 @@ export default CSSModules(function Heading(props) {
         <h3 styleName="heading">{data.title}</h3>
         {Object.keys(data.items).map(key =>{
           return (
-          <div styleName="table-row">
+          <div key={key} styleName="table-row">
             <div>{key}</div>
             <span styleName="spacer"><span /></span>
             <div>{data.items[key]}</div>
@@ -29,8 +29,7 @@ export default CSSModules(function Heading(props) {
   return (
     <div>
       <h1 styleName="heading">
-        Welcome to the El Paso 5th Ward of the Church of Jesus Christ of Latter
-        Day Saints
+        Welcome to the El Paso 5th Ward of the Church of Jesus Christ of Latter-Day Saints
       </h1>
       <h1 styleName="heading">{formattedDate}</h1>
       <div styleName="tables">

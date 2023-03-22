@@ -8,7 +8,7 @@ export default function ProgramList() {
   const [programs, setPrograms] = useState();
   const getprograms = async () => {
     setLoading(true);
-    fetch("/api/program-dates",{ cache: 'no-store' })
+    fetch("/api/program-dates", { cache: "no-store" })
       .then((res) => res.json())
       .then((result) => {
         setPrograms(result);
@@ -22,18 +22,24 @@ export default function ProgramList() {
   useEffect(() => {
     getprograms();
   }, []);
+
+  let inner;
   if (loading) {
-    return "loading...";
+    inner = "loading...";
   } else {
-    return (
-      <div>
-        <button onClick={getprograms}>refresh programs</button>
-        <h2>program list: </h2>
-        {programs.map(program =>{
-          return <ProgramItem key={program.id} id={program.id} date={program.date} />
-        })}
-        {/* <div>{JSON.stringify(programs)}</div> */}
-      </div>
-    );
+    inner = programs.map((program) => {
+      return (
+        <ProgramItem key={program.id} id={program.id} date={program.date} />
+      );
+    });
   }
+
+  return (
+    <div>
+      <button onClick={getprograms}>refresh programs</button>
+      <h2>program list: </h2>
+      {inner}
+      {/* <div>{JSON.stringify(programs)}</div> */}
+    </div>
+  );
 }
