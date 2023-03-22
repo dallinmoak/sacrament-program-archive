@@ -27,7 +27,7 @@ export default CSSModules(function Heading(props) {
     );
   };
   return (
-    <div>
+    <div styleName="heading-wrapper">
       <h1 styleName="heading">
         Welcome to the El Paso 5th Ward of the Church of Jesus Christ of Latter-Day Saints
       </h1>

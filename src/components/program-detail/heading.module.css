@@ -1,3 +1,7 @@
+.heading-wrapper{
+  margin-bottom: 1em;
+}
+
 .tables{
   display: flex;
   flex-direction: row;
