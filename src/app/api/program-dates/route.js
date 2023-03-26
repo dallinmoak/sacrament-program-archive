@@ -1,5 +1,7 @@
 import initiate from "@/common/parse-initialize";
 
+export const revalidate = 0;
+
 export async function GET(request) {
   const myParse = initiate();
   const query= new myParse.Query("Program");
