@@ -1,12 +1,15 @@
 import initiate from "@/common/parse-initialize";
-import hymnLookup from "./hymn-lookup";
-import programItems from "./program-items";
 
-export async function GET(request) {
-  const id = request.nextUrl.searchParams.get("id")
+import programItems from "@/api-helper/program-items";
+import hymnLookup from "@/api-helper/hymn-lookup";
+
+export default async function handler(req,res){
+  const id = req.query.id;
+  console.log(id);
   if(id){
     const myParse = initiate();
     const query = new myParse.Query("Program").equalTo("objectId", id);
+    console.log(query);
     try{
       const results = await query.find();
       const result = results[0];
@@ -34,11 +37,14 @@ export async function GET(request) {
         closingPrayer: result.get("closingPrayer"),
         items: items,
       }
-      return new Response(JSON.stringify(program));
+      res.status(200).json(program);
     }
     catch(e){
-      return new Response(JSON.stringify({error: "lookup error"}, {status: 500}))
+      console.log(e);
+      res.status(500).json({error: "lookup error"});
     }
   }
-  else return new Response(JSON.stringify({error: "no id"}), {status: 400})
+  else {
+    res.status(400).json({error: "no id"});
+  }
 }
