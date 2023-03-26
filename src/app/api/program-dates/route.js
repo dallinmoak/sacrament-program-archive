@@ -1,5 +1,8 @@
 import initiate from "@/common/parse-initialize";
 
+//this is needed so that a cached version of the list is not used. 
+export const revalidate = 0;
+
 export async function GET(request) {
   const myParse = initiate();
   const query= new myParse.Query("Program");
