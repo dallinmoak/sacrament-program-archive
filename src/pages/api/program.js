@@ -5,11 +5,9 @@ import hymnLookup from "@/api-helper/hymn-lookup";
 
 export default async function handler(req,res){
   const id = req.query.id;
-  console.log(id);
   if(id){
     const myParse = initiate();
     const query = new myParse.Query("Program").equalTo("objectId", id);
-    console.log(query);
     try{
       const results = await query.find();
       const result = results[0];
