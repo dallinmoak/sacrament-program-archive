@@ -3,7 +3,7 @@ import styles from "./item.module.css";
 
 export default CSSModules(
   function Item(props) {
-    const { label, presentor, hymnTitle, hymnLink, title } = {
+    const { label, presentor, hymnTitle, hymnLink, title, fastSunday } = {
       ...props.content,
     };
     return (
@@ -26,19 +26,23 @@ export default CSSModules(
         </div>
         {hymnTitle ? (
           <>
-          <div styleName="hymn">
-            &ldquo;
-            <a href={hymnLink} target="_blank">
-              {hymnTitle}
-            </a>
-            &rdquo;
-          </div>
-          {label=="Sacrament Hymn" ? 
-            <div styleName='sacr'>
-              Administration of the Sacrament
-            </div> :
-            null
-          }
+            <div styleName="hymn">
+              &ldquo;
+              <a href={hymnLink} target="_blank">
+                {hymnTitle}
+              </a>
+              &rdquo;
+            </div>
+            {label == "Sacrament Hymn" ? (
+              <>
+                <div styleName="sacr">Administration of the Sacrament</div>
+                {fastSunday ? (
+                  <div styleName="sacr">
+                    Bearing of Testimony by the Congregation
+                  </div>
+                ) : null}
+              </>
+            ) : null}
           </>
         ) : null}
       </div>

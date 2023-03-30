@@ -3,7 +3,7 @@ import Item from "../item/item";
 import styles from "../program-detail.module.css";
 
 export default CSSModules(function Main(props) {
-  const { presiding, conducting, openingHymn, openingPrayer, sacramentHymn,items, closingHymn, closingPrayer } = {
+  const { presiding, conducting, openingHymn, openingPrayer, sacramentHymn,items, closingHymn, closingPrayer, fastSunday } = {
     ...props.programDetails,
   };
   const customItems = items.sort((a,b) => a.position - b.position).map(item =>{
@@ -28,6 +28,7 @@ export default CSSModules(function Main(props) {
       presentor: sacramentHymn.number,
       hymnTitle: sacramentHymn.title,
       hymnLink: sacramentHymn.link,
+      fastSunday: fastSunday,
     },
     ...customItems,
     {

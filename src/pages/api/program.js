@@ -34,6 +34,7 @@ export default async function handler(req,res){
         closingHymn: closingHymn,
         closingPrayer: result.get("closingPrayer"),
         items: items,
+        fastSunday: result.get("fastSunday"),
       }
       res.status(200).json(program);
     }
