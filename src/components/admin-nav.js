@@ -1,10 +1,19 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function AdminNav(){
+  const router = useRouter();
+  const linkList = [
+    {path: "/", title: "Home"},
+    {path: "/admin/main", title: "Admin Page"},
+  ]
   return(
     <div>
-      <Link href="/">See all programs</Link>
-      <Link href="/admin/main">main admin page</Link>
+      {linkList.map(link =>{
+        if(link.path != router.asPath){
+          return <Link href={link.path}>{link.title}</Link>
+        }
+      })}
     </div>
   )
 }

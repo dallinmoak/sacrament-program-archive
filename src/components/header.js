@@ -1,42 +1,41 @@
-import { signIn, signOut, useSession } from "next-auth/react"
+import { signIn, signOut, useSession } from "next-auth/react";
 
-export default function Header(){
-  const { data: session, status  } = useSession();
+export default function Header() {
+  const { data: session, status } = useSession();
   const loading = status == "loading";
-  const handleSignIn = e =>{
+  const handleSignIn = (e) => {
     e.preventDefault();
     signIn();
-  }
-  const handleSignOut = e =>{
+  };
+  const handleSignOut = (e) => {
     e.preventDefault();
     signOut();
-  }
+  };
   let display = "";
-  if(!session){
+  if (!session) {
     display = (
       <>
-        <p>not signed in</p>
-        <a 
-          href={`api/auth/signin`}
-          onClick={handleSignIn} 
-        >
-          sign in
+        <span>
+          <a href={`api/auth/signin`} onClick={handleSignIn}>
+            Sign in
+          </a>{" "}
+          to access admin tools
+        </span>
+      </>
+    );
+  } else if (session && session.user) {
+    display = (
+      <>
+        <span>signed in as {session.user.email}</span>
+        <a href={`/api/auth/signout`} onClick={handleSignOut}>
+          <button>sign out</button>
         </a>
       </>
-    )
-  } else if(session && session.user) {
-    display = (<>
-      <p>signed in as {session.user.email}</p>
-      <a href={`/api/auth/signout`} onClick={handleSignOut}>
-        sign out
-      </a>
-    </>)
+    );
   }
-  return(
+  return (
     <header>
-      <div>
-        {display}
-      </div>
+      <div>{display}</div>
     </header>
-  )
+  );
 }
