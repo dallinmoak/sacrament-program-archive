@@ -14,7 +14,7 @@ export default CSSModules(
     const [programDetails, setProgramDetails] = useState();
     const getProgram = async (id) => {
       setLoading(true);
-      const requestURI = `/api/program-1?${new URLSearchParams({
+      const requestURI = `/api/program?${new URLSearchParams({
         id: id,
       })}`;
       const request = new Request(requestURI);
