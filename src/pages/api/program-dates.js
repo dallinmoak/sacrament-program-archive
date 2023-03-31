@@ -2,7 +2,7 @@ import initiate from "@/common/parse-initialize";
 
 export default async function handler(req,res){
   const myParse = initiate();
-  const query = new myParse.Query("Program");
+  const query = new myParse.Query("Program").descending("date");
   try{
     const results = await query.find();
     const programs = results.map(result =>{
