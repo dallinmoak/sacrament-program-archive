@@ -11,7 +11,7 @@ export default function AdminNav(){
     <div>
       {linkList.map(link =>{
         if(link.path != router.asPath){
-          return <Link href={link.path}>{link.title}</Link>
+          return <Link key={link.path} href={link.path}>{link.title}</Link>
         }
       })}
     </div>
