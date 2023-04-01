@@ -4,7 +4,6 @@ import Layout from "@/components/layout";
 import ProgramList from "@/components/program-list/program-list";
 import { getServerSession } from "next-auth";
 
-import { useSession } from "next-auth/react"
 import { authOptions } from "./api/auth/[...nextauth]";
 
 export default function Home({ serverIsAdmin }){
