@@ -1,0 +1,10 @@
+.preview{
+  border:1px solid black;
+  border-radius: .2em;
+  padding: 0 1em;
+}
+
+.add-button,.fast-sunday{
+  text-align: center;
+  margin-bottom: 1em;
+}

@@ -1,7 +1,6 @@
 import initiate from "@/common/parse-initialize";
 
 import programItems from "@/api-helper/program-items";
-import hymnLookup from "@/api-helper/hymn-lookup";
 
 export default async function handler(req,res){
   const id = req.query.id;
@@ -12,12 +11,15 @@ export default async function handler(req,res){
       const results = await query.find();
       const result = results[0];
       const items = await programItems(result.id);
-      const openingHymnNumber = result.get("openingHymn");
-      const openingHymn = await hymnLookup(openingHymnNumber);
-      const sacramentHymnNumber = result.get("sacramentHymn");
-      const sacramentHymn = await hymnLookup(sacramentHymnNumber);
-      const closingHymnNumber = result.get("closingHymn");
-      const closingHymn = await hymnLookup(closingHymnNumber);
+      const openingHymn = {
+        number: result.get("openingHymn"),
+      }
+      const sacramentHymn = {
+        number: result.get("sacramentHymn"),
+      }
+      const closingHymn = {
+        number: result.get("closingHymn"),
+      };
       const program = {
         id: result.id,
         date: result.get("date"),

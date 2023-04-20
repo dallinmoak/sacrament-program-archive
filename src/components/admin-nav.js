@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import styles from './admin-nav.module.css'
+
 export default function AdminNav(){
   const router = useRouter();
   const linkList = [
@@ -11,7 +13,7 @@ export default function AdminNav(){
     <div>
       {linkList.map(link =>{
         if(link.path != router.asPath){
-          return <Link key={link.path} href={link.path}>{link.title}</Link>
+          return <Link className={styles.item} key={link.path} href={link.path}>{link.title}</Link>
         }
       })}
     </div>

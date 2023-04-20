@@ -21,6 +21,7 @@ export default CSSModules(function Main(props) {
       presentor: openingHymn.number,
       hymnTitle: openingHymn.title,
       hymnLink: openingHymn.link,
+      isHymn: true,
     },
     { label: "Opening Prayer", presentor: openingPrayer },
     {
@@ -28,6 +29,7 @@ export default CSSModules(function Main(props) {
       presentor: sacramentHymn.number,
       hymnTitle: sacramentHymn.title,
       hymnLink: sacramentHymn.link,
+      isHymn: true,
       fastSunday: fastSunday,
     },
     ...customItems,
@@ -36,6 +38,7 @@ export default CSSModules(function Main(props) {
       presentor: closingHymn.number,
       hymnTitle: closingHymn.title,
       hymnLink: closingHymn.link,
+      isHymn: true,
     },
     {
       label: "Closing Prayer", presentor: closingPrayer,
