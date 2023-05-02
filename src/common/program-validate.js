@@ -1,19 +1,31 @@
 export default function isValid(program) {
-  if (!program.date) return false;
-  if (!program.presiding) return false;
-  if(!program.conducting) return false;
-  if (program.openingHymn < 1) return false;
-  if (!program.openingPrayer) return false;
-  if (program.sacramentHymn < 1) return false;
-  if (program.customItems){
+  let errorMsg = "";
+  if (!program?.date) errorMsg = "Bad date";
+  else if (!program.presiding) errorMsg = "bad Presiding";
+  else if(!program.conducting) errorMsg = "bad Conducting";
+  else if (program.openingHymn < 1) errorMsg = "bad Opening Hymn";
+  else if (!program.openingPrayer) errorMsg = "bad Opening Prayer";
+  else if (program.sacramentHymn < 1) errorMsg = "bad Sacrament Hymn";
+  else if (program.customItems){
     let hasError = false;
     program.customItems.map(item =>{
       if (!item.type) hasError = true;
       if(!item.presentor) hasError = true;
     })
-    if(hasError) return false;
+    if(hasError) errorMsg = "bad custom items";
   }
-  if (program.closingHymn < 1) return false;
-  if (!program.closingPrayer) return false;
-  return true;
+  else if (program.closingHymn < 1) errorMsg = "bad Closing Hymn";
+  else if (!program.closingPrayer) errorMsg = "bad Closing Prayer";
+  
+  if(errorMsg) {
+    return {
+      valid: false,
+      error: errorMsg,
+    }
+  } else {
+    return {
+      valid: true,
+      error: "",
+    }
+  }
 }

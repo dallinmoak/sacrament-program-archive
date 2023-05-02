@@ -37,10 +37,13 @@ export default CSSModules(function NewProgram() {
   };
 
   const save = async () => {
+    const programCopy = newProgram;
     setNewProgram((prevProgram) => {
-      ({ ...prevProgram, date: prevProgram.date.replaceAll("-", "") });
+      const date = prevProgram?.date ? prevProgram.date.replaceAll("-", "") : null;
+      ({ ...prevProgram, date: date });
     });
-    if (isValid(newProgram)) {
+    let validation = isValid(newProgram);
+    if (validation.valid) {
       setShowMessage(true);
       setLoading(true);
       postNewProgram(newProgram).then((data) => {
@@ -50,7 +53,8 @@ export default CSSModules(function NewProgram() {
         setTrigger("clear");
       });
     } else {
-      setError("program isn't valid");
+      setError(`Validation error: ${validation.error}`);
+      setNewProgram(programCopy);
     }
   };
 
