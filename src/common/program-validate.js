@@ -9,7 +9,7 @@ export default function isValid(program) {
     let hasError = false;
     program.customItems.map(item =>{
       if (!item.type) hasError = true;
-      if(!item.presenting) hasError = true;
+      if(!item.presentor) hasError = true;
     })
     if(hasError) return false;
   }
