@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import { useEffect, useState } from "react";
 import Heading from "../program-detail/heading";
 import Item from "../program-detail/item/item";
@@ -10,6 +12,8 @@ import AddItem from "./add-item";
 import isValid from "@/common/program-validate";
 
 export default CSSModules(function NewProgram() {
+  const router = useRouter();
+
   const [newProgram, setNewProgram] = useState();
   const [loading, setLoading] = useState();
   const [message, setMessage] = useState();
@@ -51,6 +55,7 @@ export default CSSModules(function NewProgram() {
         setMessage(data.message);
         setNewProgram();
         setTrigger("clear");
+        router.push(`/?msg=${data.message}`);
       });
     } else {
       setError(`Validation error: ${validation.error}`);
